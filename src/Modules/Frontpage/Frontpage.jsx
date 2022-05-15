@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
 let Frontpage = () => {
@@ -28,6 +28,18 @@ let Frontpage = () => {
     event.preventDefault();
     fetchDate();
   };
+
+  let fetchData2 = async () => {
+    let response = await fetch("https://www.eb.dk");
+    if (response.ok) {
+      let body = await response.json();
+      console.log(body);
+    }
+  };
+
+  useEffect(() => {
+    fetchData2();
+  }, []);
 
   return (
     <Container fluid>
